@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: ttskch/render-deploy@v1.0.0
+      - uses: render-deploy@v1.0.0
         with:
           api-key: ${{ secrets.RENDER_PASSWORD }}
           service-id: ${{ secrets.RENDER_EMAIL }}
