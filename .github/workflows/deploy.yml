@@ -1,23 +1,16 @@
-name: Deploy to Render
+name: Render Deploy
 
 on:
   push:
-    branches:
-      - main  # Thay đổi nhánh của bạn tại đây nếu cần
+  pull_request:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Render CLI
-      run: bash -c "curl -sSL https://render.com/deploy | sh"
-
-    - name: Render Deploy
-      env:
-        RENDER_EMAIL: ${{ secrets.RENDER_EMAIL }}
-        RENDER_PASSWORD: ${{ secrets.RENDER_PASSWORD }}
-      run: |
-        render deploy --branch main -- --dockerfile Dockerfile --env-file .env
+      - uses: ttskch/render-deploy@v1.0.0
+        with:
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          interval: 20 # optional
+          timeout: 300 # optional
