@@ -13,8 +13,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Render CLI
-      run: |
-        curl -sSL https://render.com/deploy | bash
+      run: bash -c "curl -sSL https://render.com/deploy | sh"
 
     - name: Render Deploy
       env:
