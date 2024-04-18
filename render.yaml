@@ -1,0 +1,28 @@
+# Exported from Render on 2024-04-18T08:22:46Z
+databases:
+- name: your_database_name
+  databaseName: your_database_name_wzyr
+  user: your_username
+  plan: free
+  region: singapore
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: DjangoRender
+  runtime: docker
+  repo: https://github.com/hoaidoan9a6/DjangoRender
+  plan: free
+  envVars:
+  - key: SUPERUSER_PASSWORD
+    sync: false
+  - key: SUPERUSER_EMAIL
+    sync: false
+  - key: SUPERUSER_NAME
+    sync: false
+  region: singapore
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+version: "1"
