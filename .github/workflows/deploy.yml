@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: ttskch/render-deploy@v1.0.0
         with:
-          api-key: ${{ secrets.RENDER_API_KEY }}
-          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_PASSWORD }}
+          service-id: ${{ secrets.RENDER_EMAIL }}
           interval: 20 # optional
           timeout: 300 # optional
