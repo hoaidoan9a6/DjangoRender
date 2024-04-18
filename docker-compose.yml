@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - '8000:8000'
+    environment:
+      - DEBUG=True # Set DEBUG mode
+      - SECRET_KEY='abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)' # Set your Django secret key
+      - ALLOWED_HOSTS=your_domain.com,localhost # Set allowed hosts
+    # depends_on:
+    #   - db
+    # db:
+    #   build:
+    #     context: ./postgres
+    #     dockerfile: Dockerfile
+    #   environment:
+    #     POSTGRES_USER: your_username
+    #     POSTGRES_PASSWORD: your_password
+    #     POSTGRES_DB: your_database_name
+    #   ports:
+    #     - "5432:5432"
