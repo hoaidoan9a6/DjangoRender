@@ -2,15 +2,21 @@ name: Render Deploy
 
 on:
   push:
+    branches:
+      - main  # Thay đổi nhánh của bạn nếu cần
   pull_request:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: render-deploy@v1.0.0
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Render Deploy
+        uses: render-deploy@v1.0.0
         with:
           api-key: ${{ secrets.RENDER_PASSWORD }}
           service-id: ${{ secrets.RENDER_EMAIL }}
-          interval: 20 # optional
-          timeout: 300 # optional
+          interval: 20 # Tuỳ chọn: Thời gian chờ giữa các lần kiểm tra
+          timeout: 300 # Tuỳ chọn: Thời gian tối đa cho mỗi lần triển khai
