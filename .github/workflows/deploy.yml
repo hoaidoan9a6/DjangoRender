@@ -14,7 +14,7 @@ jobs:
 
     - name: Install Render CLI
       run: |
-        curl -sSL https://render.com/deploy | sh
+        bash -c "curl -sSL https://render.com/deploy | sh"
 
     - name: Render Deploy
       env:
